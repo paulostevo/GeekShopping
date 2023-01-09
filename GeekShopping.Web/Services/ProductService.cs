@@ -1,4 +1,4 @@
-﻿using GeekShopping.ProductAPI.Model;
+﻿using GeekShopping.Web.Models;
 using GeekShopping.Web.Services.IServices;
 using GeekShopping.Web.Utils;
 

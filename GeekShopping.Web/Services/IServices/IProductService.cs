@@ -1,4 +1,4 @@
-﻿using GeekShopping.ProductAPI.Model;
+﻿using GeekShopping.Web.Models;
 
 namespace GeekShopping.Web.Services.IServices
 {
