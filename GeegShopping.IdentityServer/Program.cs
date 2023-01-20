@@ -1,5 +1,8 @@
+using Duende.IdentityServer.Services;
 using GeegShopping.IdentityServer.Configuration;
+using GeegShopping.IdentityServer.Initializer;
 using GeegShopping.IdentityServer.Model.Context;
+using GeegShopping.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,9 +32,13 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddAspNetIdentity<ApplicationUser>()
                     .AddDeveloperSigningCredential();  // pode estar errado
 
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+builder.Services.AddScoped<IProfileService,ProfileService>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+var dbInitializeService = app.Services.CreateScope().ServiceProvider.GetService<IDbInitializer>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -46,6 +53,7 @@ app.UseRouting();
 app.UseIdentityServer();
 
 app.UseAuthorization();
+dbInitializeService.Initialize();
 
 app.MapControllerRoute(
     name: "default",

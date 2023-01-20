@@ -20,8 +20,8 @@ namespace GeegShopping.IdentityServer.Configuration
             new List<ApiScope>
             {
                 new ApiScope("geek_shopping", "GeekShopping Server"),
-                new ApiScope(name: "read", "Write data."),
-                new ApiScope(name: "write", "Read data."),
+                new ApiScope(name: "read", "Read data."),
+                new ApiScope(name: "write", "Write data."),
                 new ApiScope(name: "delete", "Delete data.")
             };
 
